@@ -1,6 +1,8 @@
 import * as SSM from 'aws-sdk/clients/ssm';
 
-export const getSecrets = async (names: string[]): Promise<Record<string, string>> => {
+export const getSecrets = async (
+  names: string[],
+): Promise<Record<string, string>> => {
   const ssm = new SSM();
   const Parameters =
     (
