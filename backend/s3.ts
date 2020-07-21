@@ -34,7 +34,7 @@ const emptyS3Bucket = async (bucket: string) => {
   return bucket;
 };
 
-export const deleteBuckets = async (buckets: string[]) => {
+export const deleteBuckets = async (buckets: string[]): Promise<void> => {
   await Promise.all(
     buckets.map((bucket) =>
       emptyS3Bucket(bucket).then((bucket) =>
@@ -44,7 +44,7 @@ export const deleteBuckets = async (buckets: string[]) => {
   );
 };
 
-export const listBuckets = async () => {
+export const listBuckets = async (): Promise<S3.Buckets> => {
   const { Buckets = [] } = await s3.listBuckets().promise();
   return Buckets;
 };
